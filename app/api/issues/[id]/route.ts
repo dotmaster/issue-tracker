@@ -32,7 +32,7 @@ export async function PATCH(
   }
 
   const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
   if (!issue)
     return NextResponse.json(
@@ -60,7 +60,7 @@ export async function DELETE(
   if (!session) return NextResponse.json({}, { status: 401 });
 
   const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id:params.id },
   });
 
   if (!issue)
